@@ -36,7 +36,7 @@ func Flat(g GenerateCmdArgToken) error {
 	}
 
 	tmpl := template.Must(template.New(*g.Template).Funcs(template.FuncMap{
-		"deref": func(i *DataDescToken) DataDescToken { return *i },
+		"deref": func(i *FieldToken) FieldToken { return *i },
 	}).Parse(string(fileBytes)),
 	)
 

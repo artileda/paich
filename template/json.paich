@@ -1,0 +1,5 @@
+{ {{range .Fields}}
+    "{{.FieldName}}":"{{.FieldType}}",{{end}} 
+}
+
+{{/* This experiment for JSON generate, abusing FieldType as JSON Value */}}

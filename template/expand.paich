@@ -1,0 +1,8 @@
+<b>{{.FieldName}}</b>
+<ul>
+{{range .Fields}}{{ $f := (deref .)}}   <a>{{$f.FieldName}}</a>
+    <a>{{$f.FieldType}}</a>
+    <ul>{{range $f.FieldAttr}}
+        <li>{{.}}</li>
+    {{end}}</ul>
+{{end}}</ul>

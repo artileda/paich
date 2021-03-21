@@ -1,0 +1,7 @@
+{{define "sqlfield"}}
+    {{.FieldName}} 
+{{end}}
+
+CREATE TABLE {{.FieldName}}(
+    {{range .Fields}}{{template "sqlfield" .}}{{end}}
+)

@@ -6,15 +6,15 @@ import (
 	"strings"
 )
 
-type DataDescToken struct {
-	DataName string
-	DataType string
-	DataAtrr []string
+type FieldToken struct {
+	FieldName string
+	FieldType string
+	FieldAttr []string
 }
 
 type GenerateCmdArgToken struct {
 	FieldName string
-	DataDesc  []*DataDescToken
+	Fields    []*FieldToken
 	Template  *string
 }
 
@@ -27,11 +27,12 @@ func (g *GenerateCmdArgToken) Parse(lines *[]string, template string) error {
 		return errors.New("Special character on field name not allowed.")
 	}
 
-	var dataDescs []*DataDescToken
+	var dataDescs []*FieldToken
 	for _, e := range (*lines)[1:] {
 		dataDesc := parseDataDesc(e)
 		dataDescs = append(dataDescs, dataDesc)
 	}
+	g.Fields = dataDescs
 
 	g.Template = &template
 	return nil
@@ -41,14 +42,14 @@ func (g *GenerateCmdArgToken) Suicide() {
 	g = nil
 }
 
-func parseDataDesc(line string) *DataDescToken {
+func parseDataDesc(line string) *FieldToken {
 	stemmed := strings.Split(line, ":")
 
-	if len(stemmed) < 3 {
-		return &DataDescToken{
-			DataName: stemmed[0],
-			DataType: stemmed[1],
-			DataAtrr: stemmed[2:],
+	if len(stemmed) < 4 {
+		return &FieldToken{
+			FieldName: stemmed[0],
+			FieldType: stemmed[1],
+			FieldAttr: stemmed[2:],
 		}
 	} else {
 		return nil
