@@ -1,0 +1,6 @@
+class {{.FieldName}} {
+    {{range .Fields}}{{ $f := (deref .)}}final {{$f.FieldType}} {{$f.FieldName}}
+    {{end}}
+
+    {{.FieldName}}({{range .Fields}}{{ $f := (deref .)}}this.{{$f.FieldName}},{{end}})
+}
