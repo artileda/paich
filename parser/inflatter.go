@@ -12,8 +12,14 @@ import (
 func Flat(g GenerateCmdArgToken) error {
 	defer g.Suicide()
 
-	paichTemplateDir, _ := os.Getwd()
-	paichTemplateDir += "/template/"
+	var paichTemplateDir string
+
+	paichTemplateDir, envExist := os.LookupEnv("PAICH_TEMPLATE_DIR")
+	if !envExist || paichTemplateDir == "" {
+		paichTemplateDir, _ = os.Getwd()
+		paichTemplateDir += "/template/"
+	}
+
 	if !utils.FolderExists(paichTemplateDir) {
 		return errors.New("Template directory missing on your current directory.")
 	}

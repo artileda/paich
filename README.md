@@ -18,7 +18,11 @@ Usage using `go run`
 
 Folder template contain template following `text/template` format, and filename will be considered as template name.
 
-Create your template and place it in `template` folder.
+Create your template and place it in `template` folder or assign environment variable `PAICH_TEMPLATE_DIR` with you template path then place you template in it.
+
+```
+PAICH_TEMPLATE_DIR="/home/user/template" ./paich 
+```
 
 ### How to build
 
