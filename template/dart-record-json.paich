@@ -3,4 +3,8 @@ class {{.FieldName}} {
     {{end}}
 
     {{.FieldName}}({{range .Fields}}{{ $f := (deref .)}}this.{{$f.FieldName}},{{end}})
+
+    {{.FieldName}}.fromJson((Map<String, dynamic> json)
+      :{{range .Fields}} {{ $f := (deref .)}}{{$f.FieldName}}= json['{{$f.FieldName}}'],
+      {{end}};)
 }

@@ -4,10 +4,10 @@ Simple code generator using Go's text/template library. Field descriptor inspire
 
 Simple Usage
   - `./paich [model name] [field name]:[field type]:[field attr] --template=[template name]`
-  - `./paich generate test test:test --template=hello-world.paich`
+  - `./paich generate test test:test --template=hello-world`
 
 Usage using `go run`
-  - `go run main.go generate test name:Pavolia' 'Reine age:Expired  --template=json.paich`
+  - `go run main.go generate test name:Pavolia' 'Reine age:Expired  --template=json`
   -   Output
 ```
 { 
@@ -17,6 +17,8 @@ Usage using `go run`
 ```
 
 Folder template contain template following `text/template` format, and filename will be considered as template name.
+
+Create your template and place it in `template` folder.
 
 ### How to build
 

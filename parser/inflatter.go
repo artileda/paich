@@ -22,7 +22,7 @@ func Flat(g GenerateCmdArgToken) error {
 		return errors.New("Template name invalid, use --template=[name].")
 	}
 
-	paichTemplateDir += *g.Template
+	paichTemplateDir += (*g.Template + ".paich")
 	if !utils.FileExists(paichTemplateDir) {
 		return errors.New("Template unavailable, make sure you template name same with the name provide on flags template." + paichTemplateDir)
 	}
