@@ -6,5 +6,11 @@ class {{.FieldName}} {
 
     {{.FieldName}}.fromJson((Map<String, dynamic> json)
       :{{range .Fields}} {{ $f := (deref .)}}{{$f.FieldName}}= json['{{$f.FieldName}}'],
-      {{end}};)
+    {{end}};)
+
+    Map<String, dynamic> toJson() =>
+    {
+      {{range .Fields}} {{ $f := (deref .)}}'{{$f.FieldName}}'= {{$f.FieldName}},
+      {{end}}
+    };
 }
